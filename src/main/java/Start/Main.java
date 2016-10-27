@@ -16,6 +16,7 @@ public class Main {
 
 		Collection<User> users = Factory.getInstance().getUserDAO().getAllUser();
 		System.out.println(users);
+		System.out.println("It is a live!!!");
 //		Iterator iterator = users.iterator();
 //		System.out.println("========Все пользователи=========");
 //		while (iterator.hasNext()) {

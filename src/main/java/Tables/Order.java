@@ -1,20 +1,40 @@
 package Tables;
 
-//import java.util.HashSet;
-//import java.util.Set;
+import java.io.Serializable;
 
-public class Order {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private Integer id;
+@Entity
+@Table(name = "Orders")
+public class Order implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8805009378318881593L;
+	
+	@Id
+	@Column(name = "order_id")
+	@GeneratedValue
+	private Integer order_id;
+	
+	@Column(name = "status")
 	private Boolean status;
+	
+	@Column(name = "user_id")
 	private Integer user_id;
 
+	
 	public Integer getId() {
-		return id;
+		return order_id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.order_id = id;
 	}
 
 	public Integer getUserId() {
