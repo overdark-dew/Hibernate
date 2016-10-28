@@ -16,7 +16,21 @@ import util.HibernateUtil;
 public class UserDAOimpl implements UserDAO {
 
 	public void addUser(User user) throws SQLException {
-		// TODO Auto-generated method stub
+
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			session.save(user);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при вставке", JOptionPane.OK_OPTION);
+		} finally {
+			if (session != null && session.isOpen()) {
+
+				session.close();
+			}
+		}
 
 	}
 
@@ -28,18 +42,18 @@ public class UserDAOimpl implements UserDAO {
 	@SuppressWarnings("unchecked")
 	public Collection<User> getAllUser() throws SQLException {
 		Session session = null;
-	    List<User> users = new ArrayList<User>();
-	    try {
-	      session = HibernateUtil.getSessionFactory().openSession();
-	      users = session.createCriteria(User.class).list();
-	    } catch (Exception e) {
-	      JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'getAll'", JOptionPane.OK_OPTION);
-	    } finally {
-	      if (session != null && session.isOpen()) {
-	        session.close();
-	      }
-	    }
-	    return users;
+		List<User> users = new ArrayList<User>();
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			users = session.createCriteria(User.class).list();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'getAll'", JOptionPane.OK_OPTION);
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+		return users;
 	}
 
 	public void deleteUser(User user) throws SQLException {
