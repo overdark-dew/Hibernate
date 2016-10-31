@@ -1,4 +1,4 @@
-package DAO;
+package com.andersenlab.trainee.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import javax.swing.JOptionPane;
 
 import org.hibernate.Session;
 
-import Tables.Order;
-import Tables.User;
-import util.HibernateUtil;
+import com.andersenlab.trainee.tables.Order;
+import com.andersenlab.trainee.tables.User;
+import com.andersenlab.trainee.util.HibernateUtil;
 
 public class UserDAOimpl implements UserDAO {
 
@@ -34,7 +34,7 @@ public class UserDAOimpl implements UserDAO {
 
 	}
 
-	public Order getUserById(Integer user_id) throws SQLException {
+	public Order getUserById(User user) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

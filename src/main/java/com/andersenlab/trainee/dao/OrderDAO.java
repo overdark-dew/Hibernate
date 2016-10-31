@@ -1,9 +1,10 @@
-package DAO;
-
-import Tables.User;
-import Tables.Order;
+package com.andersenlab.trainee.dao;
 
 import java.util.Collection;
+
+import com.andersenlab.trainee.tables.Order;
+import com.andersenlab.trainee.tables.User;
+
 import java.sql.SQLException;
 
 public interface OrderDAO {

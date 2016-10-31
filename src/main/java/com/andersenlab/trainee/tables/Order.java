@@ -1,4 +1,4 @@
-package Tables;
+package com.andersenlab.trainee.tables;
 
 import java.io.Serializable;
 
@@ -22,8 +22,8 @@ public class Order implements Serializable {
 	@GeneratedValue
 	private Integer order_id;
 	
-	@Column(name = "status")
-	private Boolean status;
+	@Column(name = "stat")
+	private Integer status;
 	
 	@Column(name = "user_id")
 	private Integer user_id;
@@ -45,11 +45,11 @@ public class Order implements Serializable {
 		this.user_id = user_id;
 	}
 
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

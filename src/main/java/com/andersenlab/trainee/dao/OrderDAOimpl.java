@@ -1,4 +1,4 @@
-package DAO;
+package com.andersenlab.trainee.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import Tables.Order;
-import Tables.User;
-import util.HibernateUtil;
+import com.andersenlab.trainee.tables.Order;
+import com.andersenlab.trainee.tables.User;
+import com.andersenlab.trainee.util.HibernateUtil;
 
 public class OrderDAOimpl implements OrderDAO {
 
@@ -66,8 +66,8 @@ public class OrderDAOimpl implements OrderDAO {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			Boolean status = order.getStatus();
-			Query query = session.createQuery("from Order where status = true").setBoolean("Status ", status);
+			Integer status = order.getStatus();
+			Query query = session.createQuery("from Order where status = 1").setInteger("Status ", status);
 			orders = (List<Order>) query.list();
 			session.getTransaction().commit();
 

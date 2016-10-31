@@ -1,4 +1,4 @@
-package Tables;
+package com.andersenlab.trainee.tables;
 
 import java.io.Serializable;
 
@@ -27,20 +27,22 @@ public class User implements Serializable {
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue
-	private Integer id;
+	private Integer user_id;
 	
 	@Column(name = "name")
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order_id")
-	private Set<User> users = new HashSet<User>();
+	private Set<Order> orders = new HashSet<Order>();
+
+	
 
 	public int getId() {
-		return id;
+		return user_id;
 	}
 
 	public void setId(Integer user_id) {
-		this.id = user_id;
+		this.user_id = user_id;
 	}
 
 	public String getName() {
@@ -51,12 +53,12 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public Set<Order> getUsers() {
+		return orders;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setUsers(Set<Order> orders) {
+		this.orders = orders;
 	}
 
 }

@@ -1,9 +1,9 @@
-package Start;
+package com.andersenlab.trainee.start;
 
-import DAO.OrderDAO;
-import DAO.OrderDAOimpl;
-import DAO.UserDAO;
-import DAO.UserDAOimpl;
+import com.andersenlab.trainee.dao.OrderDAO;
+import com.andersenlab.trainee.dao.OrderDAOimpl;
+import com.andersenlab.trainee.dao.UserDAO;
+import com.andersenlab.trainee.dao.UserDAOimpl;
 
 public class Factory {
 

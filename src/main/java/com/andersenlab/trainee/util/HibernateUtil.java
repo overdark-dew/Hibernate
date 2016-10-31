@@ -1,4 +1,4 @@
-package util;
+package com.andersenlab.trainee.util;
 
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
