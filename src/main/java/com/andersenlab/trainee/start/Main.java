@@ -33,24 +33,30 @@ public class Main {
 			System.out.println("Заказ №: " + order.getId() + " Статус: " + order.getStatus());
 
 		}
-		int n = 2;
-		Order ordern = Factory.getInstance().getOrderDAO().getOrderById(n);
-		System.out.println("========Все заказ № " + n +"=========");
-		System.out.println("Заказ №: " + ordern.getId() + " Статус: " + ordern.getStatus());
-//		if (orderDAO == null) {
-//			orderDAO = new OrderDAOimpl();
-//
-//		User us = new User();
-//		us.setName("Ибрагим");
-//		
-//
-//		try {
-//			UserDAO.addUser(us);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
+//		int n = 2;
+//		Order ordern = Factory.getInstance().getOrderDAO().getOrderById(n);
+//		System.out.println("========Все заказ № " + n + "=========");
+//		System.out.println("Заказ №: " + ordern.getId() + " Статус: " + ordern.getStatus());
+
+		User us = new User();
+		//us.setId(15);
+		us.setName("Василиса");
+		// us.setUsers(orders);
+		System.out.println("Пользователь: " + us.getName() + "  ID: " + us.getId());
+		
+		try {
+			Factory.getInstance().getUserDAO().addUser(us);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// try {
+		// UserDAO.addUser(us);
+		// } catch (SQLException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 	}
-
 }

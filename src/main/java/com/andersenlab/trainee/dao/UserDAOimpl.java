@@ -34,7 +34,7 @@ public class UserDAOimpl implements UserDAO {
 
 	}
 
-	public Order getUserById(User user) throws SQLException {
+	public User getUserById(User user) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
