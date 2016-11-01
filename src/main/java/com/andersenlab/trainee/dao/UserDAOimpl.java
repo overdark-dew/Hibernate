@@ -34,9 +34,21 @@ public class UserDAOimpl implements UserDAO {
 
 	}
 
-	public User getUserById(User user) throws SQLException {
+	public User getUserById(Integer user_id) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		User user = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			user = (User) session.get(User.class, user_id);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'findById'", JOptionPane.OK_OPTION);
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+		return user;
 	}
 
 	@SuppressWarnings("unchecked")

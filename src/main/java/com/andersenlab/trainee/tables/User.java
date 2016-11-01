@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,14 +27,14 @@ public class User implements Serializable {
 
 	@Id
 	@Column(name = "user_id")
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer user_id;
 	
 	@Column(name = "name")
 	private String name;
 	
-//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order_id")
-//	private Set<Order> orders = new HashSet<Order>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order_id")
+	private Set<Order> orders = new HashSet<Order>();
 
 	
 
@@ -53,12 +54,12 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-//	public Set<Order> getUsers() {
-//		return orders;
-//	}
-//
-//	public void setUsers(Set<Order> orders) {
-//		this.orders = orders;
-//	}
+	public Set<Order> getUsers() {
+		return orders;
+	}
+
+	public void setUsers(Set<Order> orders) {
+		this.orders = orders;
+	}
 
 }

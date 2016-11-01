@@ -15,7 +15,7 @@ public interface OrderDAO {
 
 	public Order getOrderById(Integer order_id) throws SQLException;
 
-	public Collection<Order> getOrderByStatus(Order order) throws SQLException;
+	public Collection<Order> getOrderByStatus() throws SQLException;
 
 	public Collection<Order> getAllOrders() throws SQLException;
 

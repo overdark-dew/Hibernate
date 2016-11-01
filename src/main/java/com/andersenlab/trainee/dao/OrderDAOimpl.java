@@ -46,7 +46,7 @@ public class OrderDAOimpl implements OrderDAO {
 		Order order = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			order = (Order) session.load(Order.class, order_id);
+			order = (Order) session.get(Order.class, order_id);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'findById'", JOptionPane.OK_OPTION);
 		} finally {
@@ -59,14 +59,15 @@ public class OrderDAOimpl implements OrderDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Collection<Order> getOrderByStatus(Order order) throws SQLException {
+	public Collection<Order> getOrderByStatus() throws SQLException 
+	{
 		// TODO Auto-generated method stub
 		Session session = null;
 		List<Order> orders = new ArrayList<Order>();
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			Integer status = order.getStatus();
+			Integer status = 1;
 			Query query = session.createQuery("from Order where status = 1").setInteger("Status ", status);
 			orders = (List<Order>) query.list();
 			session.getTransaction().commit();
