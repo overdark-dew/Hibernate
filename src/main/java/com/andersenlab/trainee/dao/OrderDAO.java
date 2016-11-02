@@ -3,7 +3,7 @@ package com.andersenlab.trainee.dao;
 import java.util.Collection;
 
 import com.andersenlab.trainee.tables.Order;
-import com.andersenlab.trainee.tables.User;
+//import com.andersenlab.trainee.tables.User;
 
 import java.sql.SQLException;
 
@@ -21,5 +21,5 @@ public interface OrderDAO {
 
 	public void deleteOrder(Order order) throws SQLException;
 
-	public Collection<Order> getOrderByUser(User user) throws SQLException;
+	public Collection<Order> getOrderByUser(Integer user_id) throws SQLException;
 }

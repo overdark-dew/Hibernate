@@ -19,7 +19,8 @@ public class Menu {
 
 			System.out.println("\n1 - Вывести всех клиентов" + "     2 - Вывести все заказы \n"
 					+ "3 - Найти клиента по ID" + "       4 - Найти заказ но ID \n" + "5 - Добавить нового клиента"
-					+ "   6 - Добавить новый заказ \n" + "7 - Показать выполненные заказы\n" + "0 - Выход");
+					+ "   6 - Добавить новый заказ \n" + "7 - Выполненные заказы        "
+							+ "8 - Показать все заказы пользователя\n" + "0 - Выход");
 
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
@@ -124,7 +125,8 @@ public class Menu {
 
 					Order neworder = new Order();
 					neworder.setUser_id(intscan);
-
+					neworder.setStatus(0);
+					
 					Factory.getInstance().getOrderDAO().addOrder(neworder);
 
 				}
@@ -150,6 +152,20 @@ public class Menu {
 
 			case 8: {
 
+				System.out.print("Введите номер клиента: ");
+				if (sc.hasNextInt()) {
+
+					scan = sc.nextInt();}
+				
+				Collection<Order> Orders = Factory.getInstance().getOrderDAO().getOrderByUser(scan);
+
+				Iterator<Order> iterator1 = Orders.iterator();
+				System.out.println("========Все заказы=========");
+				while (iterator1.hasNext()) {
+					Order order = (Order) iterator1.next();
+					System.out.println("Заказ №: " + order.getId() + " Статус: " + order.getStatus());
+
+				}
 				break;
 			}
 

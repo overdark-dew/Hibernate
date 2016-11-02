@@ -11,7 +11,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.andersenlab.trainee.tables.Order;
-import com.andersenlab.trainee.tables.User;
+//import com.andersenlab.trainee.tables.User;
 import com.andersenlab.trainee.util.HibernateUtil;
 
 public class OrderDAOimpl implements OrderDAO {
@@ -59,8 +59,7 @@ public class OrderDAOimpl implements OrderDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Collection<Order> getOrderByStatus() throws SQLException 
-	{
+	public Collection<Order> getOrderByStatus() throws SQLException {
 		// TODO Auto-generated method stub
 		Session session = null;
 		List<Order> orders = new ArrayList<Order>();
@@ -117,9 +116,25 @@ public class OrderDAOimpl implements OrderDAO {
 
 	}
 
-	public Collection<Order> getOrderByUser(User user) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	@SuppressWarnings("unchecked")
+	public Collection<Order> getOrderByUser(Integer user_id) throws SQLException {
+		Session session = null;
+		List<Order> orders = new ArrayList<Order>();
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			//Integer user_id = id;
+			Query query = session.createQuery("from order where user_id = :user_id").setLong("user_id", user_id);
+			orders = (List<Order>) query.list();
+			session.getTransaction().commit();
+
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+		return orders;
+
 	}
 
 }
